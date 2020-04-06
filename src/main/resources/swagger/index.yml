@@ -1,0 +1,215 @@
+openapi: 3.0.1
+info:
+  title: Pismo - Transaction Manager
+  description: Api to register and transaction manager
+  version: 0.0.1
+servers:
+  - url: http://localhost:8080
+    description: Local server and port for development environment
+paths:
+  
+  /accounts:
+    post:
+      tags:
+        - account
+      summary: Account register
+      operationId: createAccount
+      requestBody:
+        description: Account created
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/account'
+        required: true
+      responses:
+        '200':
+          description: 'Successful Operation'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/account'
+        '400':
+          $ref: '#/components/responses/400'
+        '500':
+          $ref: '#/components/responses/500'
+          
+      x-codegen-request-body-name: body
+  
+  /accounts/{account_id}:   
+    get:
+      tags:
+        - account
+      summary: Gets a list accounts information 
+      description: Gets a list accounts information 
+      operationId: getAccountById
+      parameters:
+      - name: account_id
+        in: path
+        description: ID of account that needs to be fetched
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/account'
+        404:
+          $ref: '#/components/responses/404'
+        500:
+          $ref: '#/components/responses/500'
+          
+  /transactions:
+    post:
+      tags:
+        - transaction
+      summary: Transaction register
+      operationId: createTransaction
+      requestBody:
+        description: Transaction created
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/transaction'
+        required: true
+      responses:
+        '200':
+          description: 'Successful Operation'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/transaction'
+        '400':
+          $ref: '#/components/responses/400'
+        '500':
+          $ref: '#/components/responses/500'
+          
+      x-codegen-request-body-name: body
+      
+  
+components:
+  responses:
+    '200':
+      description: Successful Operation
+    '201':
+      description: Created
+      headers:
+        Location:
+          description: Uri to created resource
+          schema:
+            type: string
+    '204':
+      description: No Content
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+    '405':
+      description: Method Not Allowed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+            
+  schemas:
+    account:
+      type: object
+      required: 
+      - document_number
+      properties:
+        id:
+          description: 'Account id'
+          type: integer
+          format: int64
+          readOnly: true
+        document_number:
+          description: 'Documento number'
+          type: string
+    
+    operation_type:
+      type: object
+      properties:
+        id:
+          description: 'Operation type id'
+          type: integer
+          format: int64
+        description:
+          type: string
+              
+    
+    transaction:
+      type: object
+      required: 
+        - account_id
+        - operation_type_id
+        - amount
+      properties:
+        id:
+          description: 'Transaction id'
+          type: integer
+          format: int64
+          readOnly: true
+        account_id:
+          type: integer
+          format: int64
+        operation_type_id:
+          type: integer
+          format: int64
+        amount:
+          description: 'Transaction amount'
+          type: number
+          format: decimal
+        event_date:
+          type: string
+          format: date-time
+          readOnly: true
+    
+    ApiError:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          example: 'YYYY-MM-DDTHH:MM:SSZ'
+        message:
+          type: array
+          items:
+            type: string
+          example: ['Something wrong happened']
+        cause:
+          type: string
+          example: 'Any exception'
+        error:
+          type: string
+          example: 'Internal Server Error'
+        status:
+          type: integer
+          example: 500
