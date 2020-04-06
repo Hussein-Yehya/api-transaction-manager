@@ -24,7 +24,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 @ComponentScan(&quot;io.pismo.api.transaction.manager&quot;)
 @Configuration
 @EnableAutoConfiguration
-<span class="fc" id="L27">public class SpringConfig implements WebMvcConfigurer {</span>
+<span class="nc" id="L27">public class SpringConfig implements WebMvcConfigurer {</span>
 
 	private static final String DATE_FORMAT = &quot;yyyy-MM-dd'T'HH:mm:ss'Z'&quot;;
 
@@ -33,37 +33,37 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 	@Bean
 	@Primary
 	public ObjectMapper objectMapper() {
-<span class="fc" id="L36">		ObjectMapper objectMapper = new ObjectMapper();</span>
-<span class="fc" id="L37">		JavaTimeModule javaTimeModule = new JavaTimeModule();</span>
-<span class="fc" id="L38">		javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer());</span>
-<span class="fc" id="L39">		javaTimeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer());</span>
-<span class="fc" id="L40">		objectMapper.registerModule(javaTimeModule);</span>
-<span class="fc" id="L41">		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);</span>
-<span class="fc" id="L42">		objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);</span>
-<span class="fc" id="L43">		objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);</span>
-<span class="fc" id="L44">		objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);</span>
-<span class="fc" id="L45">		SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);</span>
-<span class="fc" id="L46">		sdf.setTimeZone(TimeZone.getTimeZone(&quot;UTC&quot;));</span>
-<span class="fc" id="L47">		objectMapper.setDateFormat(sdf);</span>
-<span class="fc" id="L48">		return objectMapper;</span>
+<span class="nc" id="L36">		ObjectMapper objectMapper = new ObjectMapper();</span>
+<span class="nc" id="L37">		JavaTimeModule javaTimeModule = new JavaTimeModule();</span>
+<span class="nc" id="L38">		javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer());</span>
+<span class="nc" id="L39">		javaTimeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer());</span>
+<span class="nc" id="L40">		objectMapper.registerModule(javaTimeModule);</span>
+<span class="nc" id="L41">		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);</span>
+<span class="nc" id="L42">		objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);</span>
+<span class="nc" id="L43">		objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);</span>
+<span class="nc" id="L44">		objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);</span>
+<span class="nc" id="L45">		SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);</span>
+<span class="nc" id="L46">		sdf.setTimeZone(TimeZone.getTimeZone(&quot;UTC&quot;));</span>
+<span class="nc" id="L47">		objectMapper.setDateFormat(sdf);</span>
+<span class="nc" id="L48">		return objectMapper;</span>
 	}
 
 	@Bean
 	@Qualifier(value = SpringConfig.GENERIC_CONVERTER_OBJECT)
 	public ObjectMapper objectMapperForGenericConverterObject() {
-<span class="fc" id="L54">		ObjectMapper objectMapper = new ObjectMapper();</span>
-<span class="fc" id="L55">		JavaTimeModule javaTimeModule = new JavaTimeModule();</span>
-<span class="fc" id="L56">		javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer());</span>
-<span class="fc" id="L57">		javaTimeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer());</span>
-<span class="fc" id="L58">		objectMapper.registerModule(javaTimeModule).configure(MapperFeature.USE_ANNOTATIONS, false)</span>
-<span class="fc" id="L59">				.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);</span>
-<span class="fc" id="L60">		return objectMapper;</span>
+<span class="nc" id="L54">		ObjectMapper objectMapper = new ObjectMapper();</span>
+<span class="nc" id="L55">		JavaTimeModule javaTimeModule = new JavaTimeModule();</span>
+<span class="nc" id="L56">		javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer());</span>
+<span class="nc" id="L57">		javaTimeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer());</span>
+<span class="nc" id="L58">		objectMapper.registerModule(javaTimeModule).configure(MapperFeature.USE_ANNOTATIONS, false)</span>
+<span class="nc" id="L59">				.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);</span>
+<span class="nc" id="L60">		return objectMapper;</span>
 	}
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-<span class="fc" id="L65">		registry.addResourceHandler(&quot;swagger-ui.html&quot;).addResourceLocations(&quot;classpath:/META-INF/resources/&quot;);</span>
-<span class="fc" id="L66">		registry.addResourceHandler(&quot;/webjars/**&quot;).addResourceLocations(&quot;classpath:/META-INF/resources/webjars/&quot;);</span>
-<span class="fc" id="L67">	}</span>
+<span class="nc" id="L65">		registry.addResourceHandler(&quot;swagger-ui.html&quot;).addResourceLocations(&quot;classpath:/META-INF/resources/&quot;);</span>
+<span class="nc" id="L66">		registry.addResourceHandler(&quot;/webjars/**&quot;).addResourceLocations(&quot;classpath:/META-INF/resources/webjars/&quot;);</span>
+<span class="nc" id="L67">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>
