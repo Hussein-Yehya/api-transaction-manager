@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 /**
  * Transaction
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-04-06T09:34:52.257-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-04-06T16:53:21.626-03:00[America/Sao_Paulo]")
 
 public class Transaction   {
   @JsonProperty("id")

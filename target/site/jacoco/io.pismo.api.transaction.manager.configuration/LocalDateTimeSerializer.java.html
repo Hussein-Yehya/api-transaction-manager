@@ -7,7 +7,7 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 
-<span class="fc" id="L10">public class LocalDateTimeSerializer extends JsonSerializer&lt;LocalDateTime&gt; {</span>
+<span class="nc" id="L10">public class LocalDateTimeSerializer extends JsonSerializer&lt;LocalDateTime&gt; {</span>
 	@Override
 	public void serialize(LocalDateTime arg0, JsonGenerator arg1, SerializerProvider arg2) throws IOException {
 <span class="nc" id="L13">		arg1.writeString(arg0.toString());</span>

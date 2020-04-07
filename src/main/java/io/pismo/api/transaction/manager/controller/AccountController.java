@@ -24,7 +24,7 @@ public class AccountController implements AccountsApi {
 
 	@Override
 	public ResponseEntity<Account> createAccount(@Valid Account body) {
-
+ 
 		log.info("Creating account {}", body.toString());
 
 		return ResponseEntity.ok(this.accountService.createAccount(body)

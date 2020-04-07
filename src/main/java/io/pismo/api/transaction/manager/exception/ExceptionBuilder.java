@@ -6,9 +6,7 @@ import java.util.function.Supplier;
 
 public class ExceptionBuilder {
 
-    public static Supplier<ApiException> buildExceptionHandler(HttpStatus status, String message) {
-        return () -> new ApiException(status.name(),
-                message,
-                status.value());
-    }
+	public static Supplier<ApiException> buildExceptionHandler(HttpStatus status, String message) {
+		return () -> new ApiException(status.name(), message, status.value());
+	}
 }

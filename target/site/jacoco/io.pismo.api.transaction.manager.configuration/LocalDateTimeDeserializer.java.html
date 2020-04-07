@@ -7,7 +7,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 
-<span class="fc" id="L10">public class LocalDateTimeDeserializer extends JsonDeserializer&lt;LocalDateTime&gt; {</span>
+<span class="nc" id="L10">public class LocalDateTimeDeserializer extends JsonDeserializer&lt;LocalDateTime&gt; {</span>
 	@Override
 	public LocalDateTime deserialize(JsonParser arg0, DeserializationContext arg1) throws IOException {
 <span class="nc" id="L13">		return LocalDateTime.parse(arg0.getText());</span>

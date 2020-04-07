@@ -3,15 +3,13 @@
 import org.springframework.http.HttpStatus;
 
 public class InternalServerErrorException extends ApiException {
+
 	private static final long serialVersionUID = 1L;
 	private static final String INTERNAL_ERROR_CODE = &quot;internal_error&quot;;
 
-	public InternalServerErrorException(Throwable e) {
-<span class="nc" id="L10">		super(INTERNAL_ERROR_CODE, HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(), HttpStatus.INTERNAL_SERVER_ERROR.value(), e);</span>
-<span class="nc" id="L11">	}</span>
-
 	public InternalServerErrorException(String message, Throwable e) {
-<span class="nc" id="L14">		super(INTERNAL_ERROR_CODE, message, HttpStatus.INTERNAL_SERVER_ERROR.value(), e);</span>
-<span class="nc" id="L15">	}</span>
+<span class="nc" id="L11">		super(INTERNAL_ERROR_CODE, message, HttpStatus.INTERNAL_SERVER_ERROR.value(), e);</span>
+<span class="nc" id="L12">	}</span>
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

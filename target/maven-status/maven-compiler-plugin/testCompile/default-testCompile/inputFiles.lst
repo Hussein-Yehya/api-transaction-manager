@@ -1,1 +1,4 @@
-/Users/ext_hali/workspace/projects/api-transaction-manager/src/test/java/io/pismo/api/transaction/manager/ApiTransactionManagerApplicationTests.java
+/Users/ext_hali/workspace/projects/api-transaction-manager/src/test/java/io/pismo/api/transaction/manager/controller/AccountControllerTest.java
+/Users/ext_hali/workspace/projects/api-transaction-manager/src/test/java/io/pismo/api/transaction/manager/UnitTest.java
+/Users/ext_hali/workspace/projects/api-transaction-manager/src/test/java/io/pismo/api/transaction/manager/service/TransactionServiceTest.java
+/Users/ext_hali/workspace/projects/api-transaction-manager/src/test/java/io/pismo/api/transaction/manager/service/AccountServiceTest.java
