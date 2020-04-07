@@ -5,19 +5,19 @@ import java.util.List;
 
 public class ValidationError extends ApiError {
 
-    private List<FieldMessage> errors;
+	private List<FieldMessage> errors;
 
-    public ValidationError(Integer status, String error, String message) {
-        super(status, error, message);
-        errors = new ArrayList<>();
-    }
+	public ValidationError(Integer status, String error, String message) {
+		super(status, error, message);
+		errors = new ArrayList<>();
+	}
 
-    public void addError(String field, String message) {
-        errors.add(new FieldMessage(field, message));
-    }
+	public void addError(String field, String message) {
+		errors.add(new FieldMessage(field, message));
+	}
 
-    public List<FieldMessage> getErrors() {
-        return this.errors;
-    }
+	public List<FieldMessage> getErrors() {
+		return this.errors;
+	}
 
 }

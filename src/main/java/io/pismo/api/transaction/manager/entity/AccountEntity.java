@@ -18,7 +18,7 @@ public class AccountEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "document_number")
+	@Column(name = "document_number", unique = true)
 	private String documentNumber;
 
 	public AccountEntity id(Long id) {

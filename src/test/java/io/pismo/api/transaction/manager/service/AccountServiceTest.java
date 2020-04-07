@@ -64,6 +64,21 @@ public class AccountServiceTest extends UnitTest {
 		});
 
 	}
+	
+	@Test()
+	public void createExistingAccountUnsuccessful() {
+
+		Optional<AccountEntity> accountEntity = this.createAccountEntity();
+
+		Optional<Account> accountModel = this.createAccountModel();
+
+		Mockito.when(this.accountRepository.findByDocumentNumber(DOCUMENT_NUMBER)).thenReturn(accountEntity);
+
+		assertThrows(ApiException.class, () -> {
+			this.accountService.createAccount(accountModel.get());
+		});
+
+	}
 
 	@Test
 	public void findAccountByIdSuccessful() {

@@ -25,7 +25,7 @@ public class SpringfoxConfig {
 
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder().title("Transaction Manager")
-				.description("You can change this configuration in SpringfoxConfig class")
+				.description("API to manage transactions")
 				.contact(new Contact("IT Team", null, "husseinyehya5@gmail.com"))
 				.build();
 	}

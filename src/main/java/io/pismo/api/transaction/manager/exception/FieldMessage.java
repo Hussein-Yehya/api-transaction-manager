@@ -4,35 +4,35 @@ import java.io.Serializable;
 
 public class FieldMessage implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    private String field;
+	private String field;
 
-    private String message;
+	private String message;
 
-    public FieldMessage() {
-    }
+	public FieldMessage() {
+	}
 
-    public FieldMessage(String field, String message) {
-        super();
-        this.field = field;
-        this.message = message;
-    }
+	public FieldMessage(String field, String message) {
+		super();
+		this.field = field;
+		this.message = message;
+	}
 
-    public String getfield() {
-        return field;
-    }
+	public String getfield() {
+		return field;
+	}
 
-    public void setfield(String field) {
-        this.field = field;
-    }
+	public void setfield(String field) {
+		this.field = field;
+	}
 
-    public String getMessage() {
-        return message;
-    }
+	public String getMessage() {
+		return message;
+	}
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
+	public void setMessage(String message) {
+		this.message = message;
+	}
 
 }

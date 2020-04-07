@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestController
 public class TransactionController implements TransactionsApi {
-	
+
 	@Autowired
 	private TransactionService transactionService;
 
@@ -25,7 +25,7 @@ public class TransactionController implements TransactionsApi {
 	public ResponseEntity<Transaction> createTransaction(@Valid Transaction body) {
 
 		log.info("Creating transaction {}", body.toString());
-		
+
 		return ResponseEntity.ok(this.transactionService.createTransaction(body)
 				.orElseThrow(buildExceptionHandler(INTERNAL_SERVER_ERROR, "Unable to create account")));
 	}
