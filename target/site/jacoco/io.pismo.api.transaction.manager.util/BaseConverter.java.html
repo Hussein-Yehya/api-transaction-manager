@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BaseConverter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-transaction-manager</a> &gt; <a href="index.source.html" class="el_package">io.pismo.api.transaction.manager.util</a> &gt; <span class="el_source">BaseConverter.java</span></div><h1>BaseConverter.java</h1><pre class="source lang-java linenums">package io.pismo.api.transaction.manager.util;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import io.pismo.api.transaction.manager.configuration.SpringConfig;
+import lombok.extern.slf4j.Slf4j;
+
+<span class="fc" id="L19">@Slf4j</span>
+@Component
+<span class="nc" id="L21">public class BaseConverter {</span>
+
+<span class="nc" id="L23">	private Logger logger = LoggerFactory.getLogger(this.getClass());</span>
+
+	@Autowired
+	@Qualifier(value = SpringConfig.GENERIC_CONVERTER_OBJECT)
+	private ObjectMapper objectMapper;
+
+	public &lt;T&gt; Optional&lt;T&gt; fromObjectToClass(Object object, Class&lt;T&gt; clazz) {
+		try {
+<span class="nc" id="L31">			String json = this.objectMapper.writeValueAsString(object);</span>
+<span class="nc" id="L32">			return Optional.of(this.objectMapper.readValue(json, clazz));</span>
+<span class="nc" id="L33">		} catch (JsonProcessingException e) {</span>
+<span class="nc" id="L34">			log.error(&quot;Unable to convert Object to Entity {} Cause: {}&quot;, clazz, e.getMessage());</span>
+<span class="nc" id="L35">		} catch (Exception e) {</span>
+<span class="nc" id="L36">			log.error(&quot;Error to convert Object to Entity: {} Cause: {}&quot;, e.getMessage(), e);</span>
+<span class="nc" id="L37">		}</span>
+
+<span class="nc" id="L39">		return Optional.empty();</span>
+
+	}
+
+	public &lt;T&gt; List&lt;T&gt; fromObjectListToClass(List&lt;?&gt; objects, Class&lt;T&gt; clazz) {
+
+<span class="nc" id="L45">		logger.info(&quot;Converter Entity List to Object List | Class:  {}&quot;, clazz.getName());</span>
+
+<span class="nc" id="L47">		return objects.stream().map(ob -&gt; fromObjectToClass(ob, clazz)).filter(Optional::isPresent).map(Optional::get)</span>
+<span class="nc" id="L48">				.collect(Collectors.toList());</span>
+
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

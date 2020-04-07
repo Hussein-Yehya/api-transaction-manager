@@ -1,0 +1,6 @@
+io/pismo/api/transaction/manager/TransactionsApi.class
+io/pismo/api/transaction/manager/AccountsApi.class
+io/pismo/api/transaction/manager/models/OperationType.class
+io/pismo/api/transaction/manager/models/Transaction.class
+io/pismo/api/transaction/manager/models/Account.class
+io/pismo/api/transaction/manager/models/ApiError.class

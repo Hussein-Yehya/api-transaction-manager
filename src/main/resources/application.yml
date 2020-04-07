@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: question-manager
+  profiles:
+    active: test
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        temp.use_jdbc_metadata_defaults: false
