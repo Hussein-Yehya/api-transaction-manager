@@ -21,12 +21,12 @@ You run the command on the terminal to clone the repository or you can download
 
 ## Docker 
 You can run the project using the docker commands directly
-* `docker pull husseinyehya/api-transaction-manager`
-* `docker run -d -p 8080:8080 -t husseinyehya/api-transaction-manager:latest`
+* `docker pull husseinyehya/api-transaction-manager-app`
+* `docker run -d -p 8080:8080 -t husseinyehya/api-transaction-manager-app:latest`
 
-## Access
+## Access	
 Address to check if the application is running
-`http://localhost:8080/ping`
+`http://localhost:8080`
 
 # 
 Following are operations exposed as REST API:
