@@ -139,7 +139,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<repository>husseinyehya/${project.artifactId}</repository>
+					<repository>husseinyehya/${project.artifactId}-app</repository>
 					<tag>${project.version}</tag>
 					<buildArgs>
 						<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
